@@ -28,6 +28,8 @@ FTP: ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR047/ERR047879/ERR047879_1.fastq.gz
 Env setup: Intel i7-10700F 8(16) cores 2900GH and 64gb of DDR4 2400GH
 
 ### Local test in Driver JVM
+**JVM**: amazon corretto 1.8
+
 Configuration:
 ```java
 new SparkConf(false)
@@ -45,12 +47,36 @@ Result:
 - Limiting factor: CPU
 
 ### Standalone Spark with single worker
+**JVM**: amazon corretto 1.8 / openjdk 11
 
-TBD
+Configuration:
+```shell
+./spark-submit \
+        --class home.yuranich.genomeanalysis.RunComputation \
+        --master spark://yuranich.localdomain:7077 \
+        --deploy-mode client \
+        --executor-memory 32G \
+        --total-executor-cores 8 \
+        file:///genome-analysis/standalone-job/target/standalone-job-0.0.1-SNAPSHOT.jar
+```
 
-### Spark with Hadoop 
+Result:
+- Execution time on `amazon corretto 1.8` ~ 32 min
+- Execution time on `openjdk 11` ~ 29 min
 
-TBD
+It is nice to see that `openjdk 11` run is actually faster!
+
+#### Spark with Hadoop 
+**Setup**: hadoop 2.7.7 pseudo distributed, started HDFS only.
+
+Loaded `ERR047879_1.fastq` to HDFS (~ 5gb file)
+
+**JVM**: amazon corretto 1.8
+
+Result:
+- Execution time ~ 41 min
+
+kinda expected
 
 ### Spark on a GPU!!! (rtx 3060ti)
 
