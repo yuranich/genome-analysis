@@ -25,7 +25,7 @@ import java.nio.file.Files;
 import java.util.Collections;
 import java.util.List;
 
-public class ADAMContextTest {
+public class KMersCountTest {
     private SparkConf sparkConf = new SparkConf(false)
             .setAppName("testADAM" + ": " + "sparkName")
             .setMaster("local[15]")

@@ -4,6 +4,9 @@ Here I explore Apache Spark distributed computation capabilities depending on en
 Computational example is based on inspiring 23rd chapter from the great **[Apache Hadoop: The Definitive Guide](https://www.oreilly.com/library/view/hadoop-the-definitive/9781491901687/)** book.
 In this chapter it is suggested to compute K-mers for genomic sequence using emerging *[ADAM](https://github.com/bigdatagenomics/adam)* framework.
 
+More information about K-mer and its applications <br />
+https://en.wikipedia.org/wiki/K-mer
+
 ## Main logic
 ```java
 // Loading exome alignments dataset using ADAM framework
@@ -84,3 +87,7 @@ kinda expected
 
 ### Small k8s cluster on two physical machines
 
+
+## TODOs
+Implement HTTP submit using apache-livy
+Setup small cluster with 2-3 computers
